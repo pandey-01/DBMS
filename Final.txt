@@ -1,0 +1,174 @@
+					Assignment 2 
+					
+Create a Banking database as follows:
+Branch (branch_name, branch_city, assets)
+Customer (c-id, cname, street, city)
+Loan (loan_no, branch_name, amount)
+Borrower (c-id, loan_no)
+Account (account_no , branch_name, balance)
+Depositor(c-id, account_no)
+
+
+Q1. Create table for above schemas. (It should include table create, drop, alter and update commands)
+
+Schemas:
+
+    Branch (branch_name, branch_city, assets)
+
+    Customer (c_id, cname, street, city)
+
+    Loan (loan_no, branch_name, amount)
+
+    Borrower (c_id, loan_no)
+
+    Account (account_no, branch_name, balance)
+
+    Depositor (c_id, account_no)
+    
+    
+    1)COMMANDS FOR MAKING SCHEMAS FOR RESPECTIVE :
+
+	CREATE TABLE Branch (
+	branch_name VARCHAR(50) PRIMARY KEY,
+	ranch_city VARCHAR(50) NOT NULL,
+	assets DECIMAL(15,2) NOT NULL);
+
+	CREATE TABLE Customer (
+	    c_id INT PRIMARY KEY,
+	    cname VARCHAR(100) NOT NULL,
+	    street VARCHAR(100),
+	    city VARCHAR(50));
+
+	CREATE TABLE Loan (
+	    loan_no INT PRIMARY KEY,
+	    branch_name VARCHAR(50),
+	    amount DECIMAL(12,2) NOT NULL,
+	    FOREIGN KEY (branch_name) REFERENCES Branch(branch_name));
+
+	CREATE TABLE Borrower (
+	    c_id INT,
+	    loan_no INT,
+	    PRIMARY KEY (c_id, loan_no),
+	    FOREIGN KEY (c_id) REFERENCES Customer(c_id),
+	    FOREIGN KEY (loan_no) REFERENCES Loan(loan_no));
+
+	CREATE TABLE Account (
+	    account_no INT PRIMARY KEY,
+	    branch_name VARCHAR(50),
+	    balance DECIMAL(12,2),
+	    FOREIGN KEY (branch_name) REFERENCES Branch(branch_name));
+
+	CREATE TABLE Depositor (
+	    c_id INT,
+	    account_no INT,
+	    PRIMARY KEY (c_id, account_no),
+	    FOREIGN KEY (c_id) REFERENCES Customer(c_id),
+	    FOREIGN KEY (account_no) REFERENCES Account(account_no)
+	);
+	
+	
+	WE WILL TAKE INP[UT FOR ALL THE TABLES BY OURSELVES RANDOM 10-15 ;
+	
+	2)DROP:
+	     
+	     	DROP TABLE IF EXISTS Depositor;
+
+	3)Alter:
+	     	ALTER TABLE Customer MODIFY cname VARCHAR(100) NOT NULL;
+	 	
+	 	
+	4)Update:
+	    	UPDATE Branch SET assets = assets + 1000000 WHERE branch_city = 'Pune';
+    	
+    	
+Q2. View Creation and DML Operations?
+
+	
+
+	DML stands for Data Manipulation Language — it's a part of SQL used to insert, retrieve, update, and delete data from database 		tables.
+
+	a) Create a view listing all customer names having account in “Pune” branch:
+	      CREATE OR REPLACE VIEW customers_in_pune AS
+	      SELECT DISTINCT c.cname
+	      FROM Customer c
+	      JOIN Depositor d ON c.c_id = d.c_id
+	      JOIN Account a ON d.account_no = a.account_no
+                   JOIN Branch b ON a.branch_name = b.branch_name
+	      WHERE b.branch_city = 'Pune';
+	      
+	b)CREATE OR REPLACE VIEW customers_in_pune_high_balance AS
+	SELECT DISTINCT c.cname
+	FROM Customer c
+	JOIN Depositor d ON c.c_id = d.c_id
+	JOIN Account a ON d.account_no = a.account_no
+	JOIN Branch b ON a.branch_name = b.branch_name
+	WHERE b.branch_city = 'Pune' AND a.balance > 20000;
+	
+	c)-- Insert
+	INSERT INTO Customer (c_id, cname, street, city) VALUES (116, 'New User', 'Main Rd', 'Pune');
+	INSERT INTO Account (account_no, branch_name, balance) VALUES (6001, 'Hinjewadi', 25000);
+	INSERT INTO Depositor (c_id, account_no) VALUES (116, 6001);
+
+	-- Update
+	UPDATE Customer SET cname = 'Updated User' WHERE c_id = 116;
+
+	-- Delete
+	DELETE FROM Depositor WHERE c_id = 116 AND account_no = 6001;
+	DELETE FROM Account WHERE account_no = 6001;
+	DELETE FROM Customer WHERE c_id = 116;
+
+
+Q3. Create, Alter, and Drop Index
+	 a) Create index on Customer and Depositor tables:
+
+	CREATE INDEX idx_customer_cname ON Customer(cname);
+	CREATE INDEX idx_depositor_account_no ON Depositor(account_no);
+
+	 b) Alter index (MySQL: drop and recreate):
+
+	DROP INDEX idx_customer_cname ON Customer;
+	CREATE INDEX idx_customer_city ON Customer(city);
+
+	 c) Drop index:
+
+	DROP INDEX idx_depositor_account_no ON Depositor;
+	
+Q4. Create sequence for required columns.
+
+	I have altered the customer table for auto-increment.
+	
+	a)ALTER TABLE Customer MODIFY c_id INT AUTO_INCREMENT;
+	
+Q5. Add appropriate keys PK,FK, Unique, not null.
+
+	Primary Key,NOT NULL--
+		
+		CREATE TABLE Customer (
+		    c_id INT PRIMARY KEY,
+		    cname VARCHAR(100) NOT NULL,
+		    street VARCHAR(100),
+		    city VARCHAR(50)
+		);
+
+	Foreign Key-- 
+		Example
+		ALTER TABLE Depositor
+		ADD FOREIGN KEY (c_id) REFERENCES Customer(c_id),
+		ADD FOREIGN KEY (account_no) REFERENCES Account(account_no);
+		
+	Unique --
+		ALTER TABLE Customer ADD UNIQUE (cname);
+		ALTER TABLE Branch MODIFY assets DECIMAL(15,2) NOT NULL;
+
+		
+	
+
+
+
+	     
+
+
+
+
+
+

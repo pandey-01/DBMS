@@ -1,0 +1,408 @@
+mysql> show tables;
++-------------------+
+| Tables_in_banking |
++-------------------+
+| account           |
+| borrower          |
+| branch            |
+| customer          |
+| depositor         |
+| loan              |
++-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from branch;
++-----------------+-------------+----------+
+| branch_name     | branch_city | assets   |
++-----------------+-------------+----------+
+| XYZ             | Lucknow     |        5 |
+| Mumbai_Main     | Mumbai      | 12000000 |
+| Delhi_Center    | Delhi       |  9500000 |
+| Bangalore_Tech  | Bangalore   |  8700000 |
+| Hyderabad_Fin   | Hyderabad   |  7600000 |
+| Chennai_South   | Chennai     |  8100000 |
+| Kolkata_East    | Kolkata     |  7300000 |
+| Pune_West       | Pune        |  6800000 |
+| Ahmedabad_Hub   | Ahmedabad   |  6200000 |
+| Jaipur_Pink     | Jaipur      |  5400000 |
+| Lucknow_Central | Lucknow     |  5000000 |
+| Surat_Trade     | Surat       |  4700000 |
+| Nagpur_North    | Nagpur      |  4300000 |
+| Indore_Metro    | Indore      |  4100000 |
+| Bhopal_Lake     | Bhopal      |  3900000 |
+| Patna_Ganges    | Patna       |  3600000 |
++-----------------+-------------+----------+
+16 rows in set (0.01 sec)
+
+mysql> select * from customer;
++------+--------------+-----------------+-----------+
+| c_id | cname        | street          | city      |
++------+--------------+-----------------+-----------+
+|    1 | Ravi Kumar   | MG Road         | Mumbai    |
+|    2 | Priya Sharma | Brigade Road    | Bangalore |
+|    3 | Amit Verma   | Connaught Place | Delhi     |
+|    4 | Neha Joshi   | Banjara Hills   | Hyderabad |
+|    5 | Sanjay Patel | Satellite Rd    | Ahmedabad |
+|    6 | Anita Singh  | Anna Salai      | Chennai   |
+|    7 | Vikram Mehta | Park Street     | Kolkata   |
+|    8 | Pooja Das    | Sinhagad Road   | Pune      |
+|    9 | Rahul Yadav  | MI Road         | Jaipur    |
+|   10 | Swati Roy    | Hazratganj      | Lucknow   |
+|   11 | Karan Bedi   | Ring Road       | Surat     |
+|   12 | Deepika Iyer | Wardha Road     | Nagpur    |
+|   13 | Manoj Thakur | AB Road         | Indore    |
+|   14 | Isha Mishra  | New Market      | Bhopal    |
+|   15 | Arjun Rathi  | Fraser Road     | Patna     |
++------+--------------+-----------------+-----------+
+15 rows in set (0.01 sec)
+
+mysql> select * from loan;
++---------+-----------------+--------+
+| loan_no | branch_name     | amount |
++---------+-----------------+--------+
+|     101 | Mumbai_Main     | 500000 |
+|     102 | Delhi_Center    | 450000 |
+|     103 | Bangalore_Tech  | 600000 |
+|     104 | Hyderabad_Fin   | 300000 |
+|     105 | Chennai_South   | 400000 |
+|     106 | Kolkata_East    | 350000 |
+|     107 | Pune_West       | 380000 |
+|     108 | Ahmedabad_Hub   | 250000 |
+|     109 | Jaipur_Pink     | 270000 |
+|     110 | Lucknow_Central | 320000 |
+|     111 | Surat_Trade     | 280000 |
+|     112 | Nagpur_North    | 240000 |
+|     113 | Indore_Metro    | 210000 |
+|     114 | Bhopal_Lake     | 200000 |
+|     115 | Patna_Ganges    | 190000 |
++---------+-----------------+--------+
+15 rows in set (0.00 sec)
+
+mysql> select * from borrower;
++------+---------+
+| c_id | loan_no |
++------+---------+
+|    1 |     101 |
+|    2 |     102 |
+|    3 |     103 |
+|    4 |     104 |
+|    5 |     105 |
+|    6 |     106 |
+|    7 |     107 |
+|    8 |     108 |
+|    9 |     109 |
+|   10 |     110 |
+|   11 |     111 |
+|   12 |     112 |
+|   13 |     113 |
+|   14 |     114 |
+|   15 |     115 |
++------+---------+
+15 rows in set (0.00 sec)
+
+mysql> select * from account;
++------------+-----------------+---------+
+| account_no | branch_name     | balance |
++------------+-----------------+---------+
+|        201 | Mumbai_Main     |  150000 |
+|        202 | Delhi_Center    |  120000 |
+|        203 | Bangalore_Tech  |  180000 |
+|        204 | Hyderabad_Fin   |  130000 |
+|        205 | Chennai_South   |  110000 |
+|        206 | Kolkata_East    |  100000 |
+|        207 | Pune_West       |  125000 |
+|        208 | Ahmedabad_Hub   |   95000 |
+|        209 | Jaipur_Pink     |  105000 |
+|        210 | Lucknow_Central |   90000 |
+|        211 | Surat_Trade     |   85000 |
+|        212 | Nagpur_North    |   80000 |
+|        213 | Indore_Metro    |   75000 |
+|        214 | Bhopal_Lake     |   70000 |
+|        215 | Patna_Ganges    |   65000 |
++------------+-----------------+---------+
+15 rows in set (0.01 sec)
+
+mysql> select * from depositor;
++------+------------+
+| c_id | account_no |
++------+------------+
+|    1 |        201 |
+|    2 |        202 |
+|    3 |        203 |
+|    4 |        204 |
+|    5 |        205 |
+|    6 |        206 |
+|    7 |        207 |
+|    8 |        208 |
+|    9 |        209 |
+|   10 |        210 |
+|   11 |        211 |
+|   12 |        212 |
+|   13 |        213 |
+|   14 |        214 |
+|   15 |        215 |
+|    1 |        202 |
+|    2 |        203 |
+|    5 |        210 |
++------+------------+
+18 rows in set (0.01 sec)
+
+mysql> CREATE VIEW Pune_Customers AS
+    -> SELECT DISTINCT c.cname
+    -> FROM customer c
+    -> JOIN depositor d ON c.c_id = d.c_id
+    -> JOIN account a ON d.account_no = a.account_no
+    -> WHERE a.branch_name = 'Pune_West';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> alter table branch
+    -> add primary key(branch_name);
+Query OK, 0 rows affected (0.52 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table loan
+    -> add primary key(loan_no);
+Query OK, 0 rows affected (0.51 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table borrower
+    -> add primary key(c_id,loan_no);
+Query OK, 0 rows affected (0.45 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table account
+    -> add primary key(account_no);
+Query OK, 0 rows affected (0.52 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table depositor
+    -> add primary key(c_id,account_no);
+Query OK, 0 rows affected (0.49 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc borrower;
++---------+---------+------+-----+---------+-------+
+| Field   | Type    | Null | Key | Default | Extra |
++---------+---------+------+-----+---------+-------+
+| c_id    | int(11) | NO   | PRI | NULL    |       |
+| loan_no | int(11) | NO   | PRI | NULL    |       |
++---------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> show full tables where
+    -> table_type='view';
++-------------------+------------+
+| Tables_in_banking | Table_type |
++-------------------+------------+
+| Pune_Customers    | VIEW       |
++-------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> drop view Pune_customers;
+ERROR 1051 (42S02): Unknown table 'banking.Pune_customers'
+mysql> drop view Pune_Customers;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show full tables where table_type='view';
+Empty set (0.00 sec)
+
+mysql> desc customer;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| c_id   | int(11)     | NO   | PRI | NULL    |       |
+| cname  | varchar(20) | YES  |     | NULL    |       |
+| street | varchar(20) | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc borrower;
++---------+---------+------+-----+---------+-------+
+| Field   | Type    | Null | Key | Default | Extra |
++---------+---------+------+-----+---------+-------+
+| c_id    | int(11) | NO   | PRI | NULL    |       |
+| loan_no | int(11) | NO   | PRI | NULL    |       |
++---------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table customer drop primary key ;
+Query OK, 15 rows affected (0.73 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> desc customer;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| c_id   | int(11)     | NO   |     | NULL    |       |
+| cname  | varchar(20) | YES  |     | NULL    |       |
+| street | varchar(20) | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from customer;
++------+--------------+-----------------+-----------+
+| c_id | cname        | street          | city      |
++------+--------------+-----------------+-----------+
+|    1 | Ravi Kumar   | MG Road         | Mumbai    |
+|    2 | Priya Sharma | Brigade Road    | Bangalore |
+|    3 | Amit Verma   | Connaught Place | Delhi     |
+|    4 | Neha Joshi   | Banjara Hills   | Hyderabad |
+|    5 | Sanjay Patel | Satellite Rd    | Ahmedabad |
+|    6 | Anita Singh  | Anna Salai      | Chennai   |
+|    7 | Vikram Mehta | Park Street     | Kolkata   |
+|    8 | Pooja Das    | Sinhagad Road   | Pune      |
+|    9 | Rahul Yadav  | MI Road         | Jaipur    |
+|   10 | Swati Roy    | Hazratganj      | Lucknow   |
+|   11 | Karan Bedi   | Ring Road       | Surat     |
+|   12 | Deepika Iyer | Wardha Road     | Nagpur    |
+|   13 | Manoj Thakur | AB Road         | Indore    |
+|   14 | Isha Mishra  | New Market      | Bhopal    |
+|   15 | Arjun Rathi  | Fraser Road     | Patna     |
++------+--------------+-----------------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> alter table customer add primary key(c_id)
+    -> ;
+Query OK, 0 rows affected (0.52 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc customer;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| c_id   | int(11)     | NO   | PRI | NULL    |       |
+| cname  | varchar(20) | YES  |     | NULL    |       |
+| street | varchar(20) | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create view pune_customer as
+    -> select cnamesAKJNC;
+ERROR 1054 (42S22): Unknown column 'cnamesAKJNC' in 'field list'
+mysql> SELECT loan_no,branch_city from loan,branch where branch_city='Mumbai';
++---------+-------------+
+| loan_no | branch_city |
++---------+-------------+
+|     101 | Mumbai      |
+|     102 | Mumbai      |
+|     103 | Mumbai      |
+|     104 | Mumbai      |
+|     105 | Mumbai      |
+|     106 | Mumbai      |
+|     107 | Mumbai      |
+|     108 | Mumbai      |
+|     109 | Mumbai      |
+|     110 | Mumbai      |
+|     111 | Mumbai      |
+|     112 | Mumbai      |
+|     113 | Mumbai      |
+|     114 | Mumbai      |
+|     115 | Mumbai      |
++---------+-------------+
+15 rows in set (0.00 sec)
+
+mysql> SELECT loan_no from loan,branch where branch_city='Mumbai';
++---------+
+| loan_no |
++---------+
+|     101 |
+|     102 |
+|     103 |
+|     104 |
+|     105 |
+|     106 |
+|     107 |
+|     108 |
+|     109 |
+|     110 |
+|     111 |
+|     112 |
+|     113 |
+|     114 |
+|     115 |
++---------+
+15 rows in set (0.00 sec)
+
+mysql> SELECT loan_no from loan where branch_city='Mumbai';
+ERROR 1054 (42S22): Unknown column 'branch_city' in 'where clause'
+mysql> SELECT loan_no from loan where branch_city in(select branch_name rom branch where branch_city='Mumbai');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'branch where branch_city='Mumbai')' at line 1
+mysql> SELECT loan_no from loan where branch_name in(select branch_name rom branch where branch_city='Mumbai');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'branch where branch_city='Mumbai')' at line 1
+mysql> SELECT loan_no 
+    -> FROM loan 
+    -> WHERE branch_name IN (
+    ->     SELECT branch_name 
+    ->     FROM branch 
+    ->     WHERE branch_city = 'Mumbai'
+    -> );
++---------+
+| loan_no |
++---------+
+|     101 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> create or replace view mumbai_loans as select loan_no from loan
+    -> where branch_name in()
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 2
+mysql> create or replace view mumbai_loans as select loan_no from loan where branch_name in(select branch_name from branch where branch_city='Mumbai';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create or replace view mumbai_loans as select loan_no from loan where branch_name in(select branch_name from branch where branch_city='Mumbai');
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from mumbai_loans;
++---------+
+| loan_no |
++---------+
+|     101 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> create index cust_index on customer(c_id);
+Query OK, 0 rows affected (0.23 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc cust_index;
+ERROR 1146 (42S02): Table 'banking.cust_index' doesn't exist
+mysql> desc customer;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| c_id   | int(11)     | NO   | PRI | NULL    |       |
+| cname  | varchar(20) | YES  |     | NULL    |       |
+| street | varchar(20) | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show index from customer;
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name   | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| customer |          0 | PRIMARY    |            1 | c_id        | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| customer |          1 | cust_index |            1 | c_id        | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> show indexes from customer;
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name   | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| customer |          0 | PRIMARY    |            1 | c_id        | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| customer |          1 | cust_index |            1 | c_id        | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table customer
+    -> auto_increment=startvalue;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'startvalue' at line 2
+mysql> alter table customer auto_increment=1;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> 

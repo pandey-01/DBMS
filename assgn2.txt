@@ -1,0 +1,227 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| banking            |
+| demo               |
+| demo1              |
+| employee           |
+| movie              |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+9 rows in set (0.03 sec)
+
+mysql> use banking;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_banking |
++-------------------+
+| account           |
+| borrower          |
+| branch            |
+| customer          |
+| depositor         |
+| loan              |
+| mumbai_loans      |
++-------------------+
+7 rows in set (0.00 sec)
+
+mysql> show full tables where table_type='VIEW';
++-------------------+------------+
+| Tables_in_banking | Table_type |
++-------------------+------------+
+| mumbai_loans      | VIEW       |
++-------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> selec * from mumbai_loans
+mumbai_loans         mumbai_loans.loan_no
+mysql> selec * from mumbai_loans
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selec * from mumbai_loans' at line 1
+mysql> selec * from mumbai_loans;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selec * from mumbai_loans' at line 1
+mysql> select * from mumbai_loans;
++---------+
+| loan_no |
++---------+
+|     101 |
++---------+
+1 row in set (0.03 sec)
+
+mysql> desc customer;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| c_id   | int(11)     | NO   | PRI | NULL    |       |
+| cname  | varchar(20) | YES  |     | NULL    |       |
+| street | varchar(20) | YES  |     | NULL    |       |
+| city   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show create table customer;
++----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table    | Create Table                                                                                                                                                                                                                                                |
++----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| customer | CREATE TABLE `customer` (
+  `c_id` int(11) NOT NULL,
+  `cname` varchar(20) DEFAULT NULL,
+  `street` varchar(20) DEFAULT NULL,
+  `city` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`c_id`),
+  KEY `cust_index` (`c_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
++----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW INDEX FROM customer;
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table    | Non_unique | Key_name   | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| customer |          0 | PRIMARY    |            1 | c_id        | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| customer |          1 | cust_index |            1 | c_id        | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
++----------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+2 rows in set (0.00 sec)
+
+mysql> create index depositor_index on depositor(c_id);
+Query OK, 0 rows affected (0.30 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from depositor;
++-----------+------------+-----------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table     | Non_unique | Key_name        | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++-----------+------------+-----------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| depositor |          0 | PRIMARY         |            1 | c_id        | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
+| depositor |          0 | PRIMARY         |            2 | account_no  | A         |          18 |     NULL | NULL   |      | BTREE      |         |               |
+| depositor |          1 | depositor_index |            1 | c_id        | A         |          15 |     NULL | NULL   |      | BTREE      |         |               |
++-----------+------------+-----------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> ALTER TABLE customer 
+    -> MODIFY COLUMN c_id INT(11) NOT NULL AUTO_INCREMENT;
+Query OK, 15 rows affected (0.85 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> desc customer;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| c_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| cname  | varchar(20) | YES  |     | NULL    |                |
+| street | varchar(20) | YES  |     | NULL    |                |
+| city   | varchar(20) | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> desc account;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| account_no  | int(11)     | NO   | PRI | NULL    |       |
+| branch_name | varchar(20) | YES  |     | NULL    |       |
+| balance     | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc depositor;
++------------+---------+------+-----+---------+-------+
+| Field      | Type    | Null | Key | Default | Extra |
++------------+---------+------+-----+---------+-------+
+| c_id       | int(11) | NO   | PRI | NULL    |       |
+| account_no | int(11) | NO   | PRI | NULL    |       |
++------------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> ALTER TABLE Customer MODIFY cname VARCHAR(20) NOT NULL;
+ERROR 1146 (42S02): Table 'banking.Customer' doesn't exist
+mysql> ALTER TABLE customer MODIFY cname VARCHAR(20) NOT NULL;
+Query OK, 0 rows affected (0.58 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Loan MODIFY amount DECIMAL(10,2) NOT NULL;
+ERROR 1146 (42S02): Table 'banking.Loan' doesn't exist
+mysql> ALTER TABLE loan MODIFY amount DECIMAL(10,2) NOT NULL;
+Query OK, 15 rows affected (0.54 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> alter table account add unique(account_no);
+alter table account add unique(account_no);
+^C
+mysql> alter table account add unique(account_no);
+Query OK, 0 rows affected (0.27 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc account
+    -> ;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| account_no  | int(11)     | NO   | PRI | NULL    |       |
+| branch_name | varchar(20) | YES  |     | NULL    |       |
+| balance     | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table account add unique(branch_name);
+Query OK, 0 rows affected (0.27 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc account;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| account_no  | int(11)     | NO   | PRI | NULL    |       |
+| branch_name | varchar(20) | YES  | UNI | NULL    |       |
+| balance     | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_banking |
++-------------------+
+| account           |
+| borrower          |
+| branch            |
+| customer          |
+| depositor         |
+| loan              |
+| mumbai_loans      |
++-------------------+
+7 rows in set (0.00 sec)
+
+mysql> ALTER TABLE loan
+    -> ADD CONSTRAINT fk_loan_branch
+    -> FOREIGN KEY (branch_name) REFERENCES branch(branch_name);
+Query OK, 15 rows affected (0.64 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> desc loan;
++-------------+---------------+------+-----+---------+-------+
+| Field       | Type          | Null | Key | Default | Extra |
++-------------+---------------+------+-----+---------+-------+
+| loan_no     | int(11)       | NO   | PRI | NULL    |       |
+| branch_name | varchar(20)   | YES  | MUL | NULL    |       |
+| amount      | decimal(10,2) | NO   |     | NULL    |       |
++-------------+---------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc branch;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| branch_name | varchar(20) | NO   | PRI | NULL    |       |
+| branch_city | varchar(20) | YES  |     | NULL    |       |
+| assets      | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+

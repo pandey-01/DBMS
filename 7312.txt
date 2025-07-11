@@ -1,0 +1,589 @@
+mysql> select * from account;
++------------+-----------------+---------+
+| account_no | branch_name     | balance |
++------------+-----------------+---------+
+|        201 | Mumbai_Main     |  150000 |
+|        202 | Delhi_Center    |  120000 |
+|        203 | Bangalore_Tech  |  180000 |
+|        204 | Hyderabad_Fin   |  130000 |
+|        205 | Chennai_South   |  110000 |
+|        206 | Kolkata_East    |  100000 |
+|        207 | Pune_West       |  125000 |
+|        208 | Ahmedabad_Hub   |   95000 |
+|        209 | Jaipur_Pink     |  105000 |
+|        210 | Lucknow_Central |   90000 |
+|        211 | Surat_Trade     |   85000 |
+|        212 | Nagpur_North    |   80000 |
+|        213 | Indore_Metro    |   75000 |
+|        214 | Bhopal_Lake     |   70000 |
+|        215 | Patna_Ganges    |   65000 |
++------------+-----------------+---------+
+15 rows in set (0.00 sec)
+
+mysql> select * from borrower;
++------+---------+
+| c_id | loan_no |
++------+---------+
+|    1 |     101 |
+|    2 |     102 |
+|    3 |     103 |
+|    4 |     104 |
+|    5 |     105 |
+|    6 |     106 |
+|    7 |     107 |
+|    8 |     108 |
+|    9 |     109 |
+|   10 |     110 |
+|   11 |     111 |
+|   12 |     112 |
+|   13 |     113 |
+|   14 |     114 |
+|   15 |     115 |
++------+---------+
+15 rows in set (0.00 sec)
+
+mysql> select * from depositor;
++------+------------+
+| c_id | account_no |
++------+------------+
+|    1 |        201 |
+|    1 |        202 |
+|    2 |        202 |
+|    2 |        203 |
+|    3 |        203 |
+|    4 |        204 |
+|    5 |        205 |
+|    5 |        210 |
+|    6 |        206 |
+|    7 |        207 |
+|    8 |        208 |
+|    9 |        209 |
+|   10 |        210 |
+|   11 |        211 |
+|   12 |        212 |
+|   13 |        213 |
+|   14 |        214 |
+|   15 |        215 |
++------+------------+
+18 rows in set (0.00 sec)
+
+mysql> select * from loan;
++---------+-----------------+-----------+
+| loan_no | branch_name     | amount    |
++---------+-----------------+-----------+
+|     101 | Mumbai_Main     | 500000.00 |
+|     102 | Delhi_Center    | 450000.00 |
+|     103 | Bangalore_Tech  | 600000.00 |
+|     104 | Hyderabad_Fin   | 300000.00 |
+|     105 | Chennai_South   | 400000.00 |
+|     106 | Kolkata_East    | 350000.00 |
+|     107 | Pune_West       | 380000.00 |
+|     108 | Ahmedabad_Hub   | 250000.00 |
+|     109 | Jaipur_Pink     | 270000.00 |
+|     110 | Lucknow_Central | 320000.00 |
+|     111 | Surat_Trade     | 280000.00 |
+|     112 | Nagpur_North    | 240000.00 |
+|     113 | Indore_Metro    | 210000.00 |
+|     114 | Bhopal_Lake     | 200000.00 |
+|     115 | Patna_Ganges    | 190000.00 |
++---------+-----------------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> select * from customer;
++------+--------------+-----------------+-----------+
+| c_id | cname        | street          | city      |
++------+--------------+-----------------+-----------+
+|    1 | Ravi Kumar   | MG Road         | Mumbai    |
+|    2 | Priya Sharma | Brigade Road    | Bangalore |
+|    3 | Amit Verma   | Connaught Place | Delhi     |
+|    4 | Neha Joshi   | Banjara Hills   | Hyderabad |
+|    5 | Sanjay Patel | Satellite Rd    | Ahmedabad |
+|    6 | Anita Singh  | Anna Salai      | Chennai   |
+|    7 | Vikram Mehta | Park Street     | Kolkata   |
+|    8 | Pooja Das    | Sinhagad Road   | Pune      |
+|    9 | Rahul Yadav  | MI Road         | Jaipur    |
+|   10 | Swati Roy    | Hazratganj      | Lucknow   |
+|   11 | Karan Bedi   | Ring Road       | Surat     |
+|   12 | Deepika Iyer | Wardha Road     | Nagpur    |
+|   13 | Manoj Thakur | AB Road         | Indore    |
+|   14 | Isha Mishra  | New Market      | Bhopal    |
+|   15 | Arjun Rathi  | Fraser Road     | Patna     |
++------+--------------+-----------------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> select * from branch;
++-----------------+-------------+----------+
+| branch_name     | branch_city | assets   |
++-----------------+-------------+----------+
+| Ahmedabad_Hub   | Ahmedabad   |  6200000 |
+| Bangalore_Tech  | Bangalore   |  8700000 |
+| Bhopal_Lake     | Bhopal      |  3900000 |
+| Chennai_South   | Chennai     |  8100000 |
+| Delhi_Center    | Delhi       |  9500000 |
+| Hyderabad_Fin   | Hyderabad   |  7600000 |
+| Indore_Metro    | Indore      |  4100000 |
+| Jaipur_Pink     | Jaipur      |  5400000 |
+| Kolkata_East    | Kolkata     |  7300000 |
+| Lucknow_Central | Lucknow     |  5000000 |
+| Mumbai_Main     | Mumbai      | 12000000 |
+| Nagpur_North    | Nagpur      |  4300000 |
+| Patna_Ganges    | Patna       |  3600000 |
+| Pune_West       | Pune        |  6800000 |
+| Surat_Trade     | Surat       |  4700000 |
+| XYZ             | Lucknow     |        5 |
++-----------------+-------------+----------+
+16 rows in set (0.02 sec)
+
+mysql> insert into customer(street,city) values('baker street','london');
+ERROR 1364 (HY000): Field 'cname' doesn't have a default value
+mysql> desc customer;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| c_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| cname  | varchar(20) | NO   |     | NULL    |                |
+| street | varchar(20) | YES  |     | NULL    |                |
+| city   | varchar(20) | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into customer(cname,street,city) values('Dhanu','baker street','london');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from branch;
++-----------------+-------------+----------+
+| branch_name     | branch_city | assets   |
++-----------------+-------------+----------+
+| Ahmedabad_Hub   | Ahmedabad   |  6200000 |
+| Bangalore_Tech  | Bangalore   |  8700000 |
+| Bhopal_Lake     | Bhopal      |  3900000 |
+| Chennai_South   | Chennai     |  8100000 |
+| Delhi_Center    | Delhi       |  9500000 |
+| Hyderabad_Fin   | Hyderabad   |  7600000 |
+| Indore_Metro    | Indore      |  4100000 |
+| Jaipur_Pink     | Jaipur      |  5400000 |
+| Kolkata_East    | Kolkata     |  7300000 |
+| Lucknow_Central | Lucknow     |  5000000 |
+| Mumbai_Main     | Mumbai      | 12000000 |
+| Nagpur_North    | Nagpur      |  4300000 |
+| Patna_Ganges    | Patna       |  3600000 |
+| Pune_West       | Pune        |  6800000 |
+| Surat_Trade     | Surat       |  4700000 |
+| XYZ             | Lucknow     |        5 |
++-----------------+-------------+----------+
+16 rows in set (0.00 sec)
+
+mysql> select * from accoutn;
+ERROR 1146 (42S02): Table 'banking.accoutn' doesn't exist
+mysql> select * from account;
++------------+-----------------+---------+
+| account_no | branch_name     | balance |
++------------+-----------------+---------+
+|        201 | Mumbai_Main     |  150000 |
+|        202 | Delhi_Center    |  120000 |
+|        203 | Bangalore_Tech  |  180000 |
+|        204 | Hyderabad_Fin   |  130000 |
+|        205 | Chennai_South   |  110000 |
+|        206 | Kolkata_East    |  100000 |
+|        207 | Pune_West       |  125000 |
+|        208 | Ahmedabad_Hub   |   95000 |
+|        209 | Jaipur_Pink     |  105000 |
+|        210 | Lucknow_Central |   90000 |
+|        211 | Surat_Trade     |   85000 |
+|        212 | Nagpur_North    |   80000 |
+|        213 | Indore_Metro    |   75000 |
+|        214 | Bhopal_Lake     |   70000 |
+|        215 | Patna_Ganges    |   65000 |
++------------+-----------------+---------+
+15 rows in set (0.00 sec)
+
+mysql> select c_id,cname from customer;
++------+--------------+
+| c_id | cname        |
++------+--------------+
+|    1 | Ravi Kumar   |
+|    2 | Priya Sharma |
+|    3 | Amit Verma   |
+|    4 | Neha Joshi   |
+|    5 | Sanjay Patel |
+|    6 | Anita Singh  |
+|    7 | Vikram Mehta |
+|    8 | Pooja Das    |
+|    9 | Rahul Yadav  |
+|   10 | Swati Roy    |
+|   11 | Karan Bedi   |
+|   12 | Deepika Iyer |
+|   13 | Manoj Thakur |
+|   14 | Isha Mishra  |
+|   15 | Arjun Rathi  |
+|   16 | Dhanu        |
++------+--------------+
+16 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT c.cname
+    -> FROM Customer c
+    -> JOIN Borrower b ON c.c-id = b.c-id
+    -> JOIN Loan l ON b.loan_no = l.loan_no
+    -> WHERE l.branch_name = 'Mumbai';
+ERROR 1146 (42S02): Table 'banking.Customer' doesn't exist
+mysql> SELECT DISTINCT c.cname
+    -> FROM customer c
+    -> JOIN borrower b ON c.c_id = b.c_id
+    -> JOIN loan l ON b.loan_no = l.loan_no
+    -> WHERE l.branch_name = 'Mumbai_Main';
++------------+
+| cname      |
++------------+
+| Ravi Kumar |
++------------+
+1 row in set (0.02 sec)
+
+mysql> select * from depositor;
++------+------------+
+| c_id | account_no |
++------+------------+
+|    1 |        201 |
+|    1 |        202 |
+|    2 |        202 |
+|    2 |        203 |
+|    3 |        203 |
+|    4 |        204 |
+|    5 |        205 |
+|    5 |        210 |
+|    6 |        206 |
+|    7 |        207 |
+|    8 |        208 |
+|    9 |        209 |
+|   10 |        210 |
+|   11 |        211 |
+|   12 |        212 |
+|   13 |        213 |
+|   14 |        214 |
+|   15 |        215 |
++------+------------+
+18 rows in set (0.00 sec)
+
+mysql> select distinct c_id from depositor d
+    -> join branch b on d.c_id=b.c_id
+    -> where distinct b.branch_name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'distinct b.branch_name' at line 3
+mysql> select distinct c_id from depositor d
+    -> join branch b on d.c_id=b.c_id;
+ERROR 1054 (42S22): Unknown column 'b.c_id' in 'on clause'
+mysql> select distinct d.c_id from depositor d
+    -> join branch b on d.c_id=b.c_id;
+ERROR 1054 (42S22): Unknown column 'b.c_id' in 'on clause'
+mysql> select distinct d.c_id from depositor d
+    -> join account a on d.account_no=a.account_no;
++------+
+| c_id |
++------+
+|    1 |
+|    2 |
+|    3 |
+|    4 |
+|    5 |
+|    6 |
+|    7 |
+|    8 |
+|    9 |
+|   10 |
+|   11 |
+|   12 |
+|   13 |
+|   14 |
+|   15 |
++------+
+15 rows in set (0.00 sec)
+
+mysql> select * from branch;
++-----------------+-------------+----------+
+| branch_name     | branch_city | assets   |
++-----------------+-------------+----------+
+| Ahmedabad_Hub   | Ahmedabad   |  6200000 |
+| Bangalore_Tech  | Bangalore   |  8700000 |
+| Bhopal_Lake     | Bhopal      |  3900000 |
+| Chennai_South   | Chennai     |  8100000 |
+| Delhi_Center    | Delhi       |  9500000 |
+| Hyderabad_Fin   | Hyderabad   |  7600000 |
+| Indore_Metro    | Indore      |  4100000 |
+| Jaipur_Pink     | Jaipur      |  5400000 |
+| Kolkata_East    | Kolkata     |  7300000 |
+| Lucknow_Central | Lucknow     |  5000000 |
+| Mumbai_Main     | Mumbai      | 12000000 |
+| Nagpur_North    | Nagpur      |  4300000 |
+| Patna_Ganges    | Patna       |  3600000 |
+| Pune_West       | Pune        |  6800000 |
+| Surat_Trade     | Surat       |  4700000 |
+| XYZ             | Lucknow     |        5 |
++-----------------+-------------+----------+
+16 rows in set (0.01 sec)
+
+mysql> update branch set branch_city='Pune' where branch_name='XYZ';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from branch;
++-----------------+-------------+----------+
+| branch_name     | branch_city | assets   |
++-----------------+-------------+----------+
+| Ahmedabad_Hub   | Ahmedabad   |  6200000 |
+| Bangalore_Tech  | Bangalore   |  8700000 |
+| Bhopal_Lake     | Bhopal      |  3900000 |
+| Chennai_South   | Chennai     |  8100000 |
+| Delhi_Center    | Delhi       |  9500000 |
+| Hyderabad_Fin   | Hyderabad   |  7600000 |
+| Indore_Metro    | Indore      |  4100000 |
+| Jaipur_Pink     | Jaipur      |  5400000 |
+| Kolkata_East    | Kolkata     |  7300000 |
+| Lucknow_Central | Lucknow     |  5000000 |
+| Mumbai_Main     | Mumbai      | 12000000 |
+| Nagpur_North    | Nagpur      |  4300000 |
+| Patna_Ganges    | Patna       |  3600000 |
+| Pune_West       | Pune        |  6800000 |
+| Surat_Trade     | Surat       |  4700000 |
+| XYZ             | Pune        |        5 |
++-----------------+-------------+----------+
+16 rows in set (0.00 sec)
+
+mysql> select * from loan;
++---------+-----------------+-----------+
+| loan_no | branch_name     | amount    |
++---------+-----------------+-----------+
+|     101 | Mumbai_Main     | 500000.00 |
+|     102 | Delhi_Center    | 450000.00 |
+|     103 | Bangalore_Tech  | 600000.00 |
+|     104 | Hyderabad_Fin   | 300000.00 |
+|     105 | Chennai_South   | 400000.00 |
+|     106 | Kolkata_East    | 350000.00 |
+|     107 | Pune_West       | 380000.00 |
+|     108 | Ahmedabad_Hub   | 250000.00 |
+|     109 | Jaipur_Pink     | 270000.00 |
+|     110 | Lucknow_Central | 320000.00 |
+|     111 | Surat_Trade     | 280000.00 |
+|     112 | Nagpur_North    | 240000.00 |
+|     113 | Indore_Metro    | 210000.00 |
+|     114 | Bhopal_Lake     | 200000.00 |
+|     115 | Patna_Ganges    | 190000.00 |
++---------+-----------------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> update loan set l.amount=100000
+    -> join borrower b on l.loan_no=b.loan_no
+    -> where b.c_id=11;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'join borrower b on l.loan_no=b.loan_no
+where b.c_id=11' at line 2
+mysql> UPDATE loan l
+    -> JOIN borrower b ON l.loan_no = b.loan_no
+    -> SET l.amount = 100000
+    -> WHERE b.c_id = 11;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from loan;
++---------+-----------------+-----------+
+| loan_no | branch_name     | amount    |
++---------+-----------------+-----------+
+|     101 | Mumbai_Main     | 500000.00 |
+|     102 | Delhi_Center    | 450000.00 |
+|     103 | Bangalore_Tech  | 600000.00 |
+|     104 | Hyderabad_Fin   | 300000.00 |
+|     105 | Chennai_South   | 400000.00 |
+|     106 | Kolkata_East    | 350000.00 |
+|     107 | Pune_West       | 380000.00 |
+|     108 | Ahmedabad_Hub   | 250000.00 |
+|     109 | Jaipur_Pink     | 270000.00 |
+|     110 | Lucknow_Central | 320000.00 |
+|     111 | Surat_Trade     | 100000.00 |
+|     112 | Nagpur_North    | 240000.00 |
+|     113 | Indore_Metro    | 210000.00 |
+|     114 | Bhopal_Lake     | 200000.00 |
+|     115 | Patna_Ganges    | 190000.00 |
++---------+-----------------+-----------+
+15 rows in set (0.00 sec)
+
+mysql> DELETE FROM Customer
+    -> WHERE c-id IN (
+    ->     SELECT d.c-id
+    ->     FROM Depositor d
+    ->     JOIN Account a ON d.account_no = a.account_no
+    ->     WHERE a.balance BETWEEN 30000 AND 80000
+    -> );
+ERROR 1146 (42S02): Table 'banking.Customer' doesn't exist
+mysql> DELETE FROM Customer
+    -> where c_id in (
+    -> select d.c_id
+    -> from depositor d
+    -> join account a on d.account_no=a.account_no
+    -> where a.balance between 30000 and 80000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6
+mysql> DELETE FROM customer
+    -> where c_id in (
+    ->     -> select d.c_id
+    ->     -> from depositor d
+    ->     -> join account a on d.account_no=a.account_no
+    ->     -> where a.balance between 30000 and 80000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> select d.c_id
+    -> from depositor d
+    -> join account a on d.account_no=a' at line 3
+mysql> DELETE FROM customer
+    -> where c_id in (
+    -> select d.c_id
+    -> from depositor d
+    -> join account a on d.account_no=a.account_no
+    -> where a.balance between 30000 and 80000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6
+mysql> DELETE FROM customer
+    -> WHERE c_id IN (
+    ->     SELECT d.c_id
+    ->     FROM depositor d
+    ->     JOIN account a ON d.account_no = a.account_no
+    ->     WHERE a.balance BETWEEN 30000 AND 80000
+    -> );
+Query OK, 4 rows affected (0.06 sec)
+
+mysql> SELECT cname
+    -> FROM customer
+    -> WHERE cname LIKE 'R%';
++-------------+
+| cname       |
++-------------+
+| Ravi Kumar  |
+| Rahul Yadav |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT c.cname
+    -> FROM customer c
+    -> JOIN borrower b ON c.c_id = b.c_id
+    -> JOIN loan l ON b.loan_no = l.loan_no
+    -> WHERE l.branch_name IN ('XYZ', 'ABC', 'PQR');
+Empty set (0.00 sec)
+
+mysql> select * from customer;
++------+--------------+-----------------+-----------+
+| c_id | cname        | street          | city      |
++------+--------------+-----------------+-----------+
+|    1 | Ravi Kumar   | MG Road         | Mumbai    |
+|    2 | Priya Sharma | Brigade Road    | Bangalore |
+|    3 | Amit Verma   | Connaught Place | Delhi     |
+|    4 | Neha Joshi   | Banjara Hills   | Hyderabad |
+|    5 | Sanjay Patel | Satellite Rd    | Ahmedabad |
+|    6 | Anita Singh  | Anna Salai      | Chennai   |
+|    7 | Vikram Mehta | Park Street     | Kolkata   |
+|    8 | Pooja Das    | Sinhagad Road   | Pune      |
+|    9 | Rahul Yadav  | MI Road         | Jaipur    |
+|   10 | Swati Roy    | Hazratganj      | Lucknow   |
+|   11 | Karan Bedi   | Ring Road       | Surat     |
+|   16 | Dhanu        | baker street    | london    |
++------+--------------+-----------------+-----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT AVG(balance) AS avg_balance
+    -> FROM account
+    -> WHERE branch_name = 'XYZ';
++-------------+
+| avg_balance |
++-------------+
+|        NULL |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> desc customer;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| c_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| cname  | varchar(20) | NO   |     | NULL    |                |
+| street | varchar(20) | YES  |     | NULL    |                |
+| city   | varchar(20) | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> desc branch
+    -> ;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| branch_name | varchar(20) | NO   | PRI | NULL    |       |
+| branch_city | varchar(20) | YES  |     | NULL    |       |
+| assets      | int(11)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(DISTINCT d.c_id) AS total_customers
+    -> FROM depositor d
+    -> JOIN account a ON d.account_no = a.account_no
+    -> WHERE a.branch_name = 'Mumbai_Main';
++-----------------+
+| total_customers |
++-----------------+
+|               1 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT 
+    ->     MAX(amount) AS max_loan_amount,
+    ->     MIN(amount) AS min_loan_amount
+    -> FROM loan
+    -> WHERE branch_name = 'Mumbai_Main';
++-----------------+-----------------+
+| max_loan_amount | min_loan_amount |
++-----------------+-----------------+
+|       500000.00 |       500000.00 |
++-----------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(balance) AS total_balance
+    -> FROM account
+    -> WHERE branch_name = 'Mumbai_Main';
++---------------+
+| total_balance |
++---------------+
+|        150000 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM customer
+    -> ORDER BY cname ASC, city DESC;
++------+--------------+-----------------+-----------+
+| c_id | cname        | street          | city      |
++------+--------------+-----------------+-----------+
+|    3 | Amit Verma   | Connaught Place | Delhi     |
+|    6 | Anita Singh  | Anna Salai      | Chennai   |
+|   16 | Dhanu        | baker street    | london    |
+|   11 | Karan Bedi   | Ring Road       | Surat     |
+|    4 | Neha Joshi   | Banjara Hills   | Hyderabad |
+|    8 | Pooja Das    | Sinhagad Road   | Pune      |
+|    2 | Priya Sharma | Brigade Road    | Bangalore |
+|    9 | Rahul Yadav  | MI Road         | Jaipur    |
+|    1 | Ravi Kumar   | MG Road         | Mumbai    |
+|    5 | Sanjay Patel | Satellite Rd    | Ahmedabad |
+|   10 | Swati Roy    | Hazratganj      | Lucknow   |
+|    7 | Vikram Mehta | Park Street     | Kolkata   |
++------+--------------+-----------------+-----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT c.cname
+    -> FROM customer c
+    -> JOIN borrower b ON c.c_id = b.c_id
+    -> JOIN loan l ON b.loan_no = l.loan_no
+    -> WHERE l.branch_name = 'Mumbai_Main'
+    -> 
+    -> UNION
+    -> 
+    -> SELECT DISTINCT c.cname
+    -> FROM customer c
+    -> JOIN borrower b ON c.c_id = b.c_id
+    -> JOIN loan l ON b.loan_no = l.loan_no
+    -> WHERE l.branch_name = 'Delhi_Center';
++--------------+
+| cname        |
++--------------+
+| Ravi Kumar   |
+| Priya Sharma |
++--------------+
+2 rows in set (0.00 sec)
+
+mysql> 
